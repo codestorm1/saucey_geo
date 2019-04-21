@@ -1,0 +1,22 @@
+{
+  "name": "sauecy_geo",
+  "version": "1.0.0",
+  "description": "Test for Saucey",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codestorm1/sauecy_geo.git"
+  },
+  "author": "Bryan Green",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/codestorm1/sauecy_geo/issues"
+  },
+  "homepage": "https://github.com/codestorm1/sauecy_geo#readme",
+  "devDependencies": {
+    "mocha": "^6.1.4"
+  }
+}
