@@ -1,3 +1,4 @@
+// latitude is Y dumbass!
 
 function isLeft(linePoint1, linePoint2, point) {
   // return ((b.x - a.x)*(c.y - a.y) - (b.y - a.y)*(c.x - a.x)) > 0;
@@ -9,12 +10,18 @@ function isLeft(linePoint1, linePoint2, point) {
 function rayCrossesLine(linePoint1, linePoint2, point) {
   const y1 = linePoint1.y;
   const y2 = linePoint2.y;
-  console.log('between? ', point.x, y1, y2);
-  const between =  point.x >= Math.min(y1, y2) && point.y < Math.max(y1, y2);
-  console.log('left? ', linePoint1, linePoint2, point);
-  const left = isLeft(linePoint1, linePoint2, point);
-  console.log('between', between, 'left', left);
-  return between && left;
+  // console.log('between? ', point.y, y1, y2);
+  const between =  point.y >= Math.min(y1, y2) && point.y < Math.max(y1, y2);
+  // console.log('y', point.y , 'min', Math.min(y1, y2) , 'max',  Math.max(y1, y2));
+  // console.log('left? ', point, 'point1:', linePoint1, 'point2:', linePoint2);
+
+  if (between) {
+    left = isLeft(linePoint1, linePoint2, point);
+    console.log('line:', linePoint1, linePoint2, 'the point: ', point);
+    console.log('between', between, 'left', left);
+    return between && left;
+  }
+  return false;
 }
 
 function countCrossings(polygonPointsArray, point) {
