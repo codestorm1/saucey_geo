@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/codestorm1/sauecy_geo#readme",
   "devDependencies": {
+    "chai": "^4.2.0",
     "mocha": "^6.1.4"
   }
 }
