@@ -67,7 +67,6 @@ describe('left/right', (() => {
       point = { x: -4, y: 5 };
       server.isLeft(linePoint1, linePoint2, point);
       expect(server.isLeft(linePoint1, linePoint2, point)).to.be.false;
-    }));
   }));
 }));
 
