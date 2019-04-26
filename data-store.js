@@ -1,18 +1,13 @@
-// const redis = require('redis');
-
-// const client = redis.createClient();
-
 const Redis = require('ioredis');
 
 const redis = new Redis();
 
 async function save(key, object) {
-
-    try {
-        const result = await redis.set(key, JSON.stringify(object));
-    } catch (error) {
-        console.error(`save error ${error}`);
-    }
+  try {
+      await redis.set(key, JSON.stringify(object));
+  } catch (error) {
+      console.error(`save error ${error}`);
+  }
 }
 
 async function load(key) {

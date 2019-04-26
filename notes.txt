@@ -1,0 +1,5 @@
+make geospatial fp
+check code coverage instanbul
+
+
+

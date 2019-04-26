@@ -2,37 +2,36 @@ const assert = require('assert');
 const expect = require('chai').expect;
 
 const polygon = require('../polygon-points.json');
-const server = require('../geometry-server');
+const geospatial = require('../geospatial');
 
 const knownInside = [
-  {
-    x: -118.3828353881836,
-    y: 34.079109226606356
-  },
-  {
-    x: -118.33030700683594,
-    y: 34.09602708232169
-  },
-  {
-    x: -118.4028353881836,
-    y: 34.0650209226606356
-  },
-  {
-    x: -118.3214,
-    y: 34.0521
-
-  }
+  [
+    -118.3828353881836,
+    34.079109226606356
+  ],
+  [
+    -118.33030700683594,
+    34.09602708232169
+  ],
+  // [
+  //   -118.4028353881836,
+  //   34.0650209226606356
+  // ],
+  [
+    -118.3214,
+    34.0521
+  ]
 ];
 
 const knownOutside = [
-  {
-    x: -118.33000,
-    y: 34.11969051767928
-  },
-  {
-    x: -118.4028353881836,
-    y: 34.0650209226606356
-  }
+  [
+    -118.33000,
+    34.11969051767928
+  ],
+  [
+    -118.4028353881836,
+    34.0650209226606356
+  ]
 ];
 
 // describe.skip('Server', (() => {
@@ -70,20 +69,21 @@ const knownOutside = [
 //     }));
 //   }));
 
-//   describe('Determine whether a point is in a polgon', (() => {
-//     it('should return true when the point is inside the polygon', (() => {
-//       knownInside.forEach(point => {
-//         console.log('THE REAL POINT-=>', point.x, point.y)
-//         expect(server.pointInPolygon(polygon, point)).to.be.true;
-//       });
-//     }));
+describe('Determine available inventory for locations', (() => {
+  it('should return 21 when the point is inside the polygon', (async () => {
+    knownInside.forEach(async (point) => {
+      await geospatial.init();
+      const inv = await geospatial.getInventory(point);
+      expect(inv).to.equal(21);
+    });
+  }));
 
-//     it('should return false when the point is outside the polygon', (() => {
-//       knownOutside.forEach((point) => {
-//         console.log('-=>', point.x, point.y)
-//         expect(server.pointInPolygon(polygon, point)).to.be.false;
-//       });
-//     }));
-//   }));
+  it('should return 0 when the point is outside the polygon', (async () => {
+    knownOutside.forEach(async (point) => {
+      await geospatial.init();
+      const inv = await geospatial.getInventory(point);
+      expect(inv).to.equal(0);
+    });
+  }));
+}));
 
- 
